@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 
+@plugin 'tailwindcss-animate';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -174,6 +175,5 @@
   }
   body {
     @apply bg-background text-foreground;
-    @apply font-sans
   }
 }
