@@ -3,7 +3,7 @@ import React from 'react';
 
 export default async function Home() {
     return (
-        <section>
+        <section className='bg-green-700'>
             <HomePage />
         </section>
     );
