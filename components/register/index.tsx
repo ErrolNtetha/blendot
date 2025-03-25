@@ -156,7 +156,7 @@ export function RegisterForm({
           <section className="relative hidden bg-muted bg-[yellow] md:block">
             <Image
               src="/pots.jpg"
-              alt="Image"
+              alt=""
               fill
               className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
             />
