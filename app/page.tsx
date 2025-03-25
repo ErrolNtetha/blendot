@@ -53,8 +53,7 @@ export default function LandingPage() {
         getAllPosts();
     }, []);
 
-    const handleSearch = (e: any) => {
-        e.preventDefault()
+    const handleSearch = () => {
         console.log('hello');
     }
 
