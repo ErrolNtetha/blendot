@@ -546,7 +546,7 @@ export default function LandingPage() {
           >
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#5C4033] mb-4">Our Growing Community</h2>
             <p className="text-lg text-[#5C4033]-80%">
-              Join thousands of gardeners already sharing and connecting. Here&apos;s what they're saying.
+              Join thousands of gardeners already sharing and connecting. Here&apos;s what they&aposre saying.
             </p>
           </motion.section>
 
