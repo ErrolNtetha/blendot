@@ -7,7 +7,7 @@ export async function GET() {
         console.log(posts);
         return NextResponse.json({ posts });
     } catch (error) {
-        console.log('there was an error getting posts: ', error);
+        console.log('There was an error getting posts: ', error);
         return NextResponse.json(error);
     }
 }
