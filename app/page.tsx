@@ -42,16 +42,16 @@ export default function LandingPage() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-    useEffect(() => {
-        // All user posts 
-        const getAllPosts = async () => {
-            const posts = await fetch('/api/v1/posts');
-            const res = await posts.json();
-            console.log('Posts: ', res);
-        }
-
-        getAllPosts();
-    }, []);
+    //useEffect(() => {
+    //    // All user posts 
+    //    const getAllPosts = async () => {
+    //        const posts = await fetch('/api/v1/posts');
+    //        const res = await posts.json();
+    //        console.log('Posts: ', res);
+    //    }
+    //
+    //    getAllPosts();
+    //}, []);
 
     const handleSearch = () => {
         console.log('hello');
