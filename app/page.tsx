@@ -398,7 +398,7 @@ export default function LandingPage() {
                 </section>
                 <h3 className="text-xl font-serif font-bold text-[#5C4033] mb-3 text-center">Create Your Profile</h3>
                 <p className="text-[#5C4033]-80% text-center">
-                  Sign up and tell us about your garden, what you're growing, and what you're looking for.
+                  Sign up and tell us about your garden, what you&apos;re growing, and what you&apos;re looking for.
                 </p>
               </section>
             </motion.section>
@@ -547,7 +547,7 @@ export default function LandingPage() {
           >
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#5C4033] mb-4">Our Growing Community</h2>
             <p className="text-lg text-[#5C4033]-80%">
-              Join thousands of gardeners already sharing and connecting. Here's what they're saying.
+              Join thousands of gardeners already sharing and connecting. Here&apos;s what they're saying.
             </p>
           </motion.section>
 
@@ -575,8 +575,8 @@ export default function LandingPage() {
                 </section>
               </section>
               <p className="text-[#5C4033]-80% italic">
-                "Blendot has transformed my small balcony garden! I've connected with neighbors who share rare herb
-                varieties I couldn't find elsewhere."
+                &apos;Blendot has transformed my small balcony garden! I&apos;ve connected with neighbors who share rare herb
+                varieties I couldn&apos;t find elsewhere.&apos;
               </p>
               <section className="flex mt-4 text-[#A05C42]">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -620,8 +620,8 @@ export default function LandingPage() {
                 </section>
               </section>
               <p className="text-[#5C4033]-80% italic">
-                "Our community garden has flourished since joining Blendot. We've reduced waste by 70% and increased
-                the variety of crops we grow by sharing with other gardens."
+                &apos;Our community garden has flourished since joining Blendot. We&apos;ve reduced waste by 70% and increased
+                the variety of crops we grow by sharing with other gardens.&apos;
               </p>
               <section className="flex mt-4 text-[#A05C42]">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -665,8 +665,8 @@ export default function LandingPage() {
                 </section>
               </section>
               <p className="text-[#5C4033]-80% italic">
-                "As a beginner, I was intimidated to start gardening. The Blendot community welcomed me with open arms,
-                sharing not just seeds but knowledge and encouragement."
+                &apos;As a beginner, I was intimidated to start gardening. The Blendot community welcomed me with open arms,
+                sharing not just seeds but knowledge and encouragement.&apos;
               </p>
               <section className="flex mt-4 text-[#A05C42]">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
