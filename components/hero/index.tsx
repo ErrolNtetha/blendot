@@ -1,4 +1,3 @@
-// @ts-nocheck
 'use client'
 
 // import Link from 'next/link';
@@ -39,6 +38,7 @@ export const Hero = () => {
                     </Form>
                 </section>
                 <picture className='absolute bottom-0 translate-y-[50%] shadow-lg w-80 h-80 object-fill rounded-md'>
+                    {/* @ts-ignore */}
                     <img alt='tomatoes' src='/assets/tomatoes.jpg' className='object-cover' />
                 </picture>
             </span>
