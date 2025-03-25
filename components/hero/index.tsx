@@ -1,4 +1,3 @@
-// @ts-nocheck
 'use client'
 
 // import Link from 'next/link';
@@ -6,6 +5,7 @@ import React from 'react';
 import { Form, FormControl, FormField, FormItem, FormLabel } from '../ui/form';
 import { useForm } from 'react-hook-form';
 import { Button } from '../ui/button';
+import Image from 'next/image';
 
 export const Hero = () => {
     const form = useForm();
@@ -39,7 +39,7 @@ export const Hero = () => {
                     </Form>
                 </section>
                 <picture className='absolute bottom-0 translate-y-[50%] shadow-lg w-80 h-80 object-fill rounded-md'>
-                    <img alt='tomatoes' src='/assets/tomatoes.jpg' className='object-cover' />
+                    <Image alt='tomatoes' src='/assets/tomatoes.jpg' className='object-cover' />
                 </picture>
             </span>
         </section>
