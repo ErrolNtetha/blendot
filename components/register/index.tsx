@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod'; 
 import { signIn } from "next-auth/react";
+import Image from "next/image";
 
 const MIN_PASSWORD_LENGTH = 6;
 
@@ -153,9 +154,10 @@ export function RegisterForm({
           </form>
           </Form>
           <section className="relative hidden bg-muted bg-[yellow] md:block">
-            <img
+            <Image
               src="/pots.jpg"
               alt="Image"
+              fill
               className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
             />
           </section>
