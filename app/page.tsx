@@ -57,6 +57,53 @@ export default function LandingPage() {
         console.log('hello');
     }
 
+    const users = [
+        {
+            img: '/avatars/01.jpg',
+            names: {
+                firstNames: 'Nonhle',
+                lastName: 'Mkhize'
+            },
+            seeds: 'Swiss Chard Seeds',
+            offerType: 'Trade',
+            seedsPicture: '/garden/02.jpg',
+            km: 15,
+        },
+        {
+            img: '/avatars/02.jpg',
+            names: {
+                firstNames: 'Alwande',
+                lastName: 'Gumede'
+            },
+            seeds: 'Cucumber Seeds',
+            offerType: 'Free',
+            seedsPicture: '/garden/03.jpg',
+            km: 28,
+        },
+        {
+            img: '/avatars/03.jpg',
+            names: {
+                firstNames: 'John',
+                lastName: 'Schwartz'
+            },
+            seeds: 'Tomato Variety Seeds',
+            offerType: 'Trade',
+            seedsPicture: '/garden/04.jpg',
+            km: 4,
+        },
+        {
+            img: '/avatars/04.jpg',
+            names: {
+                firstNames: 'Sandile',
+                lastName: 'Phungula'
+            },
+            seeds: 'Blueberries',
+            offerType: 'Free',
+            seedsPicture: '/garden/01.jpg',
+            km: 12,
+        },
+    ]
+
   const fadeIn = {
     hidden: { opacity: 0 },
     visible: {
@@ -232,7 +279,7 @@ export default function LandingPage() {
                     <Users className="h-5 w-5 text-[#A05C42]" />
                   </section>
                   <section>
-                    <p className="text-sm font-medium text-[#5C4033]">Join 5,000+ gardeners</p>
+                    <p className="text-sm font-medium text-[#5C4033]">Join 2,000+ gardeners</p>
                     <p className="text-xs text-[#5C4033]-70%">in your local area</p>
                   </section>
                 </section>
@@ -474,16 +521,16 @@ export default function LandingPage() {
             viewport={{ once: true }}
             className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
-            {[1, 2, 3, 4].map((item) => (
+            {users.map((user, index) => (
               <motion.section
-                key={item}
+                key={index}
                 variants={itemFadeIn}
                 className="bg-white rounded-2xl overflow-hidden shadow-md border border-[#E8DFD8] group"
               >
                 <section className="relative h-48 w-full">
                   <Image
-                    src={`/pots.jpg`}
-                    alt={`Garden item ${item}`}
+                    src={user.seedsPicture}
+                    alt={`Garden item`}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
@@ -491,23 +538,20 @@ export default function LandingPage() {
                 <section className="p-4">
                   <section className="flex justify-between items-start mb-2">
                     <h3 className="font-medium text-[#5C4033]">
-                      {item === 1 && "Heirloom Tomato Seeds"}
-                      {item === 2 && "Basil Seedlings"}
-                      {item === 3 && "Dahlia Bulbs"}
-                      {item === 4 && "Fresh Zucchini"}
+                        {user.seeds}
                     </h3>
                     <span className="bg-[#A05C42]-10% border text-[#A05C42] text-xs px-2 py-1 rounded-full">
-                      {item % 2 === 0 ? "Trade" : "Free"}
+                        {user.offerType}
                     </span>
                   </section>
                   <section className="flex items-center gap-2 mb-3">
                     <MapPin className="h-4 w-4 text-[#A05C42]" />
-                    <span className="text-sm text-[#5C4033]-70%">2.{item} miles away</span>
+                    <span className="text-sm text-[#5C4033]-70%">{user.km} km away</span>
                   </section>
                   <section className="flex items-center gap-2">
                     <section className="w-6 h-6 rounded-full overflow-hidden">
                       <Image
-                        src="/pots.jpg"
+                        src={user.img}
                         alt="User avatar"
                         width={24}
                         height={24}
@@ -515,10 +559,7 @@ export default function LandingPage() {
                       />
                     </section>
                     <span className="text-sm text-[#5C4033]">
-                      {item === 1 && "Sarah J."}
-                      {item === 2 && "Michael T."}
-                      {item === 3 && "Elena R."}
-                      {item === 4 && "David K."}
+                        {user.names.firstNames} {user.names.lastName}
                     </span>
                   </section>
                 </section>
@@ -561,7 +602,7 @@ export default function LandingPage() {
               <section className="flex items-center gap-4 mb-4">
                 <section className="w-14 h-14 rounded-full overflow-hidden">
                   <Image
-                    src="/placeholder.svg?height=100&width=100"
+                    src="/avatars/05.jpg"
                     alt="User avatar"
                     width={56}
                     height={56}
@@ -569,7 +610,7 @@ export default function LandingPage() {
                   />
                 </section>
                 <section>
-                  <h4 className="font-medium text-[#5C4033]">Maria Garcia</h4>
+                  <h4 className="font-medium text-[#5C4033]">Nongcebo Mthimkhulu</h4>
                   <p className="text-sm text-[#5C4033]-70%">Urban Gardener</p>
                 </section>
               </section>
@@ -606,7 +647,7 @@ export default function LandingPage() {
               <section className="flex items-center gap-4 mb-4">
                 <section className="w-14 h-14 rounded-full overflow-hidden">
                   <Image
-                    src="/placeholder.svg?height=100&width=100"
+                    src="/avatars/06.jpg"
                     alt="User avatar"
                     width={56}
                     height={56}
@@ -614,7 +655,7 @@ export default function LandingPage() {
                   />
                 </section>
                 <section>
-                  <h4 className="font-medium text-[#5C4033]">James Wilson</h4>
+                  <h4 className="font-medium text-[#5C4033]">Emmy Wilson</h4>
                   <p className="text-sm text-[#5C4033]-70%">Community Garden Leader</p>
                 </section>
               </section>
@@ -651,7 +692,7 @@ export default function LandingPage() {
               <section className="flex items-center gap-4 mb-4">
                 <section className="w-14 h-14 rounded-full overflow-hidden">
                   <Image
-                    src="/placeholder.svg?height=100&width=100"
+                    src="/avatars/08.jpg"
                     alt="User avatar"
                     width={56}
                     height={56}
@@ -725,10 +766,10 @@ export default function LandingPage() {
             </section>
             <section className="mt-8 flex items-center justify-center gap-4">
               <section className="flex -space-x-2">
-                {[1, 2, 3, 4].map((i) => (
-                  <section key={i} className="w-8 h-8 rounded-full border-2 border-white overflow-hidden">
+                {users.map((i, index) => (
+                  <section key={index} className="w-8 h-8 rounded-full border-2 border-white overflow-hidden">
                     <Image
-                      src={`/placeholder.svg?height=50&width=50&text=${i}`}
+                      src={i.img}
                       alt={`User ${i}`}
                       width={32}
                       height={32}
@@ -738,7 +779,7 @@ export default function LandingPage() {
                 ))}
               </section>
               <p className="text-sm text-[#5C4033]-80%">
-                Join <span className="font-medium text-[#5C4033]">5,000+</span> gardeners in your area
+                Join <span className="font-medium text-[#5C4033]">2,000+</span> gardeners in your area
               </p>
             </section>
           </motion.section>
