@@ -1,6 +1,5 @@
 "use client"
 
-import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -10,8 +9,6 @@ import {
   Users,
   MapPin,
   Search,
-  Menu,
-  X,
   MessageCircle,
   SproutIcon as Seedling,
   Sun,
@@ -25,23 +22,8 @@ import { useRouter } from "next/navigation"
 import { BUCKET_URL } from "@/constants/cf"
 
 export default function LandingPage() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const router = useRouter();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true)
-      } else {
-        setIsScrolled(false)
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
 
     //useEffect(() => {
     //    // All user posts 
