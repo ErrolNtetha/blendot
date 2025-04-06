@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import AuthProvider from "./session-provider";
 
 const soleilBold = localFont({
   src: "./fonts/SoleilBold.otf",
@@ -28,7 +29,9 @@ export default function RootLayout({
       <body
         className={`${soleilRegular.variable} ${soleilBold.variable} antialiased`}
       >
+        <AuthProvider>
         {children}
+        </AuthProvider>
       </body>
     </html>
   );
