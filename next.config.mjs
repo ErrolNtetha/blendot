@@ -7,6 +7,17 @@ const nextConfig = {
     });
     return config;
   },
+  images: {
+     remotePatterns: [
+          {
+            protocol: 'https',
+            hostname: '**.r2.dev',
+            port: '',
+            pathname: '/**',
+            search: '',
+          },
+        ],
+      },
 };
 
 export default nextConfig;

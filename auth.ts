@@ -63,6 +63,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             token.createdAt = user.createdAt;
             token.avatar = user.avatar;
           }
+
           return token;
         },
         async session({ session, token }) {

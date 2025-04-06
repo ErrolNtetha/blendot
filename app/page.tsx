@@ -22,6 +22,7 @@ import {
 import Link from "next/link"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
+import { BUCKET_URL } from "@/constants/cf"
 
 export default function LandingPage() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -59,47 +60,47 @@ export default function LandingPage() {
 
     const users = [
         {
-            img: '/avatars/01.jpg',
+            img: `${BUCKET_URL}/user-01.jpg`,
             names: {
                 firstNames: 'Nonhle',
                 lastName: 'Mkhize'
             },
             seeds: 'Swiss Chard Seeds',
             offerType: 'Trade',
-            seedsPicture: '/garden/02.jpg',
+            seedsPicture: `${BUCKET_URL}/02.jpg`,
             km: 15,
         },
         {
-            img: '/avatars/02.jpg',
+            img: `${BUCKET_URL}/user-02.jpg`,
             names: {
                 firstNames: 'Alwande',
                 lastName: 'Gumede'
             },
             seeds: 'Cucumber Seeds',
             offerType: 'Free',
-            seedsPicture: '/garden/03.jpg',
+            seedsPicture: `${BUCKET_URL}/03.jpg`,
             km: 28,
         },
         {
-            img: '/avatars/03.jpg',
+            img: `${BUCKET_URL}/user-03.jpg`,
             names: {
                 firstNames: 'John',
                 lastName: 'Schwartz'
             },
             seeds: 'Tomato Variety Seeds',
             offerType: 'Trade',
-            seedsPicture: '/garden/04.jpg',
+            seedsPicture: `${BUCKET_URL}/04.jpg`,
             km: 4,
         },
         {
-            img: '/avatars/04.jpg',
+            img: `${BUCKET_URL}/user-04.jpg`,
             names: {
                 firstNames: 'Sandile',
                 lastName: 'Phungula'
             },
             seeds: 'Blueberries',
             offerType: 'Free',
-            seedsPicture: '/garden/01.jpg',
+            seedsPicture: `${BUCKET_URL}/01.jpg`,
             km: 12,
         },
     ]
@@ -133,93 +134,7 @@ export default function LandingPage() {
   }
 
   return (
-    <section className="min-h-screen bg-[#F8F5F2]">
-      {/* Header */}
-      <header
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          isScrolled ? "bg-[#F8F5F2]-90% backdrop-blur-md shadow-sm" : "bg-transparent"
-        }`}
-      >
-        <section className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="font-serif font-bold text-xl text-[#5C4033]">Blendot</span>
-            {/* <Image 
-                src={'/logo.png'}
-                alt='Blendot logo'
-                width={100}
-                height={100}
-            /> */}
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            <Link href="#about" className="text-[#5C4033] hover:text-[#A05C42] transition-colors font-medium">
-              Home
-            </Link>
-            <Link href="#about" className="text-[#5C4033] hover:text-[#A05C42] transition-colors font-medium">
-              About
-            </Link>
-            <Link href="#how-it-works" className="text-[#5C4033] hover:text-[#A05C42] transition-colors font-medium">
-              FAQ
-            </Link>
-            <Link href="#community" className="text-[#5C4033] hover:text-[#A05C42] transition-colors font-medium">
-              Services
-            </Link>
-            <Link href="#community" className="text-[#5C4033] hover:text-[#A05C42] transition-colors font-medium">
-              Contact
-            </Link>
-            <section className='flex gap-2'>
-                <Button className="bg-[#A05C42] hover:bg-[#8B4513] text-white" onClick={() => router.push('/register')}>Join Now</Button>
-                <Button variant={'outline'} className="hover:bg-[#8B4513] hover:text-white" asChild>
-                    <Link href='/login'>
-                        Login
-                    </Link>
-                </Button>
-            </section>
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <button className="md:hidden text-[#5C4033]" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            {mobileMenuOpen ? <X /> : <Menu />}
-          </button>
-        </section>
-
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <motion.section
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#F8F5F2] border-t border-[#E8DFD8]"
-          >
-            <section className="container mx-auto px-4 py-4 flex flex-col gap-4">
-              <Link
-                href="#about"
-                className="text-[#5C4033] hover:text-[#A05C42] transition-colors py-2 font-medium"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                About
-              </Link>
-              <Link
-                href="#how-it-works"
-                className="text-[#5C4033] hover:text-[#A05C42] transition-colors py-2 font-medium"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                How It Works
-              </Link>
-              <Link
-                href="#community"
-                className="text-[#5C4033] hover:text-[#A05C42] transition-colors py-2 font-medium"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Community
-              </Link>
-              <Button className="bg-[#A05C42] hover:bg-[#8B4513] text-white w-full">Join Now</Button>
-            </section>
-          </motion.section>
-        )}
-      </header>
-
+    <section className="">
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
         <section className="absolute inset-0 -z-10">
@@ -267,7 +182,7 @@ export default function LandingPage() {
             >
               <section className="relative h-[400px] w-full rounded-2xl overflow-hidden">
                 <Image
-                  src="/pots.jpg"
+                  src={`${BUCKET_URL}/pots.jpg`}
                   alt="People gardening together"
                   fill
                   className="object-cover"
@@ -602,7 +517,7 @@ export default function LandingPage() {
               <section className="flex items-center gap-4 mb-4">
                 <section className="w-14 h-14 rounded-full overflow-hidden">
                   <Image
-                    src="/avatars/05.jpg"
+                    src={`${BUCKET_URL}/user-05.jpg`}
                     alt="User avatar"
                     width={56}
                     height={56}
@@ -647,7 +562,7 @@ export default function LandingPage() {
               <section className="flex items-center gap-4 mb-4">
                 <section className="w-14 h-14 rounded-full overflow-hidden">
                   <Image
-                    src="/avatars/06.jpg"
+                    src={`${BUCKET_URL}/user-06.jpg`}
                     alt="User avatar"
                     width={56}
                     height={56}
@@ -692,7 +607,7 @@ export default function LandingPage() {
               <section className="flex items-center gap-4 mb-4">
                 <section className="w-14 h-14 rounded-full overflow-hidden">
                   <Image
-                    src="/avatars/08.jpg"
+                    src={`${BUCKET_URL}/user-08.jpg`}
                     alt="User avatar"
                     width={56}
                     height={56}

@@ -50,7 +50,7 @@ export function RegisterForm({
     }
 
   return (
-    <section className={cn("flex flex-col gap-6", className)} {...props}>
+    <section className={cn("flex flex-col gap-6 h-screen", className)} {...props}>
       <Card className="overflow-hidden">
         <CardContent className="grid p-0 md:grid-cols-2">
         <Form {...form}>
@@ -161,7 +161,7 @@ export function RegisterForm({
           </Form>
           <section className="relative hidden bg-muted bg-[yellow] md:block">
             <Image
-              src="/garden/05.jpg"
+              src="https://pub-f978174ac0204b87a29dfd389dc42917.r2.dev/05.jpg"
               alt=""
               fill
               className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
