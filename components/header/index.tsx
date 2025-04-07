@@ -6,11 +6,15 @@ import { Button } from '../ui/button'
 import { Menu, X } from 'lucide-react'
 import { motion } from "framer-motion"
 import { useRouter } from 'next/navigation'
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
+import { signOut, useSession } from 'next-auth/react'
+import { FiPower } from 'react-icons/fi';
 // import { navItems } from './navItems'
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { data: session } = useSession();
 
   const router = useRouter();
 
@@ -23,13 +27,18 @@ export const Header = () => {
       }
     }
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleLogout = async () => {
+    router.replace('login');
+    await signOut();
+  }
 
     return (
       <header
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        className={`fixed top-0 w-full h-16 z-50 transition-all duration-300 ${
           isScrolled ? "bg-[#F8F5F2]-90% backdrop-blur-md shadow-sm" : "bg-transparent"
         }`}
       >
@@ -61,14 +70,30 @@ export const Header = () => {
             <Link href="#community" className="text-[#5C4033] hover:text-[#A05C42] transition-colors font-medium">
               Contact
             </Link>
-            <section className='flex gap-2'>
-                <Button className="bg-[#A05C42] hover:bg-[#8B4513] text-white" onClick={() => router.push('/register')}>Join Now</Button>
+            {!session && <section className='flex gap-2'>
+                <Button className="bg-[#A05C42] hover:bg-[#8B4513] text-white" asChild>
+                    <Link href='/register'>
+                        Join Now
+                    </Link>
+                </Button>
                 <Button variant={'outline'} className="hover:bg-[#8B4513] hover:text-white" asChild>
                     <Link href='/login'>
                         Login
                     </Link>
                 </Button>
-            </section>
+            </section>}
+            {session && (
+            <section>
+                <span className='flex gap-2 items-center'>
+                    <Avatar>
+                      <AvatarImage src={session?.user?.avatar} />
+                      <AvatarFallback>{session?.user.firstNames?.charAt(0)}{session?.user.lastName?.charAt(0)}</AvatarFallback>
+                    </Avatar>
+                    <Button variant={'default'} className='' size={'icon'} onClick={handleLogout}>
+                        <FiPower />
+                    </Button>
+                </span>
+            </section>)}
           </nav>
 
           {/* Mobile Menu Button */}

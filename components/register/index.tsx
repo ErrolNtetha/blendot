@@ -50,7 +50,7 @@ export function RegisterForm({
     }
 
   return (
-    <section className={cn("flex flex-col gap-6 h-screen", className)} {...props}>
+    <section className={cn("flex flex-col gap-6 h-screen mt-10", className)} {...props}>
       <Card className="overflow-hidden">
         <CardContent className="grid p-0 md:grid-cols-2">
         <Form {...form}>

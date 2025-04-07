@@ -70,11 +70,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         },
         async session({ session, token }) {
             session.user.id = token.id as string;
-            session.email = token.email;
-            session.firstNames = token.firstNames;
-            session.lastName = token.lastName;
-            session.createdAt = token.createdAt;
-            session.avatar = token.avatar;
+            session.user.email = token.email;
+            session.user.firstNames = token.firstNames;
+            session.user.lastName = token.lastName;
+            session.user.createdAt = token.createdAt;
+            session.user.avatar = token.avatar;
 
             return session;
         }

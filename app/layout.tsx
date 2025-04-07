@@ -31,8 +31,8 @@ export default function RootLayout({
         className={`${soleilRegular.variable} ${soleilBold.variable} antialiased`}
       >
         <AuthProvider>
-        <section className="min-h-screen bg-[#F8F5F2]">
-            <Header />
+        <Header />
+        <section className="min-h-screen pt-10 bg-[#F8F5F2]">
             {children}
         </section>
         </AuthProvider>
