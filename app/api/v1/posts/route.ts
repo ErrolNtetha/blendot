@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
     try {
-        const posts = await prisma.post.findMany();
+        const posts = await prisma.seedPost.findMany();
         console.log(posts);
         return NextResponse.json({ posts });
     } catch (error) {

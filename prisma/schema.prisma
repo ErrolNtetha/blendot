@@ -13,28 +13,57 @@ datasource db {
   url      = env("POSTGRES_URL")
 }
 
-model Post {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  title     String   @db.VarChar(255)
-  content   String?
-  published Boolean  @default(false)
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  Int
+model User {
+  id         String     @id @default(uuid())
+  firstNames String
+  lastName   String
+  avatar     String?
+  email      String     @unique
+  username   String?    @unique
+  password   String
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  seedPosts  SeedPost[]
+  profile    Profile?
+}
+
+model SeedPost {
+  id          String     @id @default(uuid())
+  title       String
+  description String?
+  offerType   OfferType
+  tradeFor    String? // What they want in trade (if applicable)
+  status      PostStatus @default(AVAILABLE)
+  latitude    Decimal // Location coordinates
+  longitude   Decimal
+  author      User       @relation(fields: [authorId], references: [id])
+  authorId    String
+  images      Image[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Image {
+  id         String   @id @default(uuid())
+  url        String // URL to image storage (e.g., S3, Cloudinary)
+  seedPost   SeedPost @relation(fields: [seedPostId], references: [id])
+  seedPostId String
 }
 
 model Profile {
   id     Int     @id @default(autoincrement())
   bio    String?
   user   User    @relation(fields: [userId], references: [id])
-  userId Int     @unique
+  userId String  @unique
 }
 
-model User {
-  id      Int      @id @default(autoincrement())
-  email   String   @unique
-  name    String?
-  posts   Post[]
-  profile Profile?
+enum PostStatus {
+  AVAILABLE
+  PENDING // When a trade is in progress
+  COMPLETED
+}
+
+enum OfferType {
+  FREE
+  TRADE
 }

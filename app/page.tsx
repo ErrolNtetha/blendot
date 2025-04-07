@@ -1,6 +1,5 @@
 "use client"
 
-import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -10,8 +9,6 @@ import {
   Users,
   MapPin,
   Search,
-  Menu,
-  X,
   MessageCircle,
   SproutIcon as Seedling,
   Sun,
@@ -22,25 +19,11 @@ import {
 import Link from "next/link"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
+import { BUCKET_URL } from "@/constants/cf"
 
 export default function LandingPage() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const router = useRouter();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true)
-      } else {
-        setIsScrolled(false)
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
 
     //useEffect(() => {
     //    // All user posts 
@@ -56,6 +39,53 @@ export default function LandingPage() {
     const handleSearch = () => {
         console.log('hello');
     }
+
+    const users = [
+        {
+            img: `${BUCKET_URL}/user-01.jpg`,
+            names: {
+                firstNames: 'Nonhle',
+                lastName: 'Mkhize'
+            },
+            seeds: 'Swiss Chard Seeds',
+            offerType: 'Trade',
+            seedsPicture: `${BUCKET_URL}/02.jpg`,
+            km: 15,
+        },
+        {
+            img: `${BUCKET_URL}/user-02.jpg`,
+            names: {
+                firstNames: 'Alwande',
+                lastName: 'Gumede'
+            },
+            seeds: 'Cucumber Seeds',
+            offerType: 'Free',
+            seedsPicture: `${BUCKET_URL}/03.jpg`,
+            km: 28,
+        },
+        {
+            img: `${BUCKET_URL}/user-03.jpg`,
+            names: {
+                firstNames: 'John',
+                lastName: 'Schwartz'
+            },
+            seeds: 'Tomato Variety Seeds',
+            offerType: 'Trade',
+            seedsPicture: `${BUCKET_URL}/04.jpg`,
+            km: 4,
+        },
+        {
+            img: `${BUCKET_URL}/user-04.jpg`,
+            names: {
+                firstNames: 'Sandile',
+                lastName: 'Phungula'
+            },
+            seeds: 'Blueberries',
+            offerType: 'Free',
+            seedsPicture: `${BUCKET_URL}/01.jpg`,
+            km: 12,
+        },
+    ]
 
   const fadeIn = {
     hidden: { opacity: 0 },
@@ -86,93 +116,7 @@ export default function LandingPage() {
   }
 
   return (
-    <section className="min-h-screen bg-[#F8F5F2]">
-      {/* Header */}
-      <header
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          isScrolled ? "bg-[#F8F5F2]-90% backdrop-blur-md shadow-sm" : "bg-transparent"
-        }`}
-      >
-        <section className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="font-serif font-bold text-xl text-[#5C4033]">Blendot</span>
-            {/* <Image 
-                src={'/logo.png'}
-                alt='Blendot logo'
-                width={100}
-                height={100}
-            /> */}
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            <Link href="#about" className="text-[#5C4033] hover:text-[#A05C42] transition-colors font-medium">
-              Home
-            </Link>
-            <Link href="#about" className="text-[#5C4033] hover:text-[#A05C42] transition-colors font-medium">
-              About
-            </Link>
-            <Link href="#how-it-works" className="text-[#5C4033] hover:text-[#A05C42] transition-colors font-medium">
-              FAQ
-            </Link>
-            <Link href="#community" className="text-[#5C4033] hover:text-[#A05C42] transition-colors font-medium">
-              Services
-            </Link>
-            <Link href="#community" className="text-[#5C4033] hover:text-[#A05C42] transition-colors font-medium">
-              Contact
-            </Link>
-            <section className='flex gap-2'>
-                <Button className="bg-[#A05C42] hover:bg-[#8B4513] text-white" onClick={() => router.push('/register')}>Join Now</Button>
-                <Button variant={'outline'} className="hover:bg-[#8B4513] hover:text-white" asChild>
-                    <Link href='/login'>
-                        Login
-                    </Link>
-                </Button>
-            </section>
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <button className="md:hidden text-[#5C4033]" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            {mobileMenuOpen ? <X /> : <Menu />}
-          </button>
-        </section>
-
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <motion.section
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#F8F5F2] border-t border-[#E8DFD8]"
-          >
-            <section className="container mx-auto px-4 py-4 flex flex-col gap-4">
-              <Link
-                href="#about"
-                className="text-[#5C4033] hover:text-[#A05C42] transition-colors py-2 font-medium"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                About
-              </Link>
-              <Link
-                href="#how-it-works"
-                className="text-[#5C4033] hover:text-[#A05C42] transition-colors py-2 font-medium"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                How It Works
-              </Link>
-              <Link
-                href="#community"
-                className="text-[#5C4033] hover:text-[#A05C42] transition-colors py-2 font-medium"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Community
-              </Link>
-              <Button className="bg-[#A05C42] hover:bg-[#8B4513] text-white w-full">Join Now</Button>
-            </section>
-          </motion.section>
-        )}
-      </header>
-
+    <section className="">
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
         <section className="absolute inset-0 -z-10">
@@ -220,7 +164,7 @@ export default function LandingPage() {
             >
               <section className="relative h-[400px] w-full rounded-2xl overflow-hidden">
                 <Image
-                  src="/pots.jpg"
+                  src={`${BUCKET_URL}/01.jpg`}
                   alt="People gardening together"
                   fill
                   className="object-cover"
@@ -232,7 +176,7 @@ export default function LandingPage() {
                     <Users className="h-5 w-5 text-[#A05C42]" />
                   </section>
                   <section>
-                    <p className="text-sm font-medium text-[#5C4033]">Join 5,000+ gardeners</p>
+                    <p className="text-sm font-medium text-[#5C4033]">Join 2,000+ gardeners</p>
                     <p className="text-xs text-[#5C4033]-70%">in your local area</p>
                   </section>
                 </section>
@@ -474,16 +418,16 @@ export default function LandingPage() {
             viewport={{ once: true }}
             className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
-            {[1, 2, 3, 4].map((item) => (
+            {users.map((user, index) => (
               <motion.section
-                key={item}
+                key={index}
                 variants={itemFadeIn}
                 className="bg-white rounded-2xl overflow-hidden shadow-md border border-[#E8DFD8] group"
               >
                 <section className="relative h-48 w-full">
                   <Image
-                    src={`/pots.jpg`}
-                    alt={`Garden item ${item}`}
+                    src={user.seedsPicture}
+                    alt={`Garden item`}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
@@ -491,23 +435,20 @@ export default function LandingPage() {
                 <section className="p-4">
                   <section className="flex justify-between items-start mb-2">
                     <h3 className="font-medium text-[#5C4033]">
-                      {item === 1 && "Heirloom Tomato Seeds"}
-                      {item === 2 && "Basil Seedlings"}
-                      {item === 3 && "Dahlia Bulbs"}
-                      {item === 4 && "Fresh Zucchini"}
+                        {user.seeds}
                     </h3>
                     <span className="bg-[#A05C42]-10% border text-[#A05C42] text-xs px-2 py-1 rounded-full">
-                      {item % 2 === 0 ? "Trade" : "Free"}
+                        {user.offerType}
                     </span>
                   </section>
                   <section className="flex items-center gap-2 mb-3">
                     <MapPin className="h-4 w-4 text-[#A05C42]" />
-                    <span className="text-sm text-[#5C4033]-70%">2.{item} miles away</span>
+                    <span className="text-sm text-[#5C4033]-70%">{user.km} km away</span>
                   </section>
                   <section className="flex items-center gap-2">
                     <section className="w-6 h-6 rounded-full overflow-hidden">
                       <Image
-                        src="/pots.jpg"
+                        src={user.img}
                         alt="User avatar"
                         width={24}
                         height={24}
@@ -515,10 +456,7 @@ export default function LandingPage() {
                       />
                     </section>
                     <span className="text-sm text-[#5C4033]">
-                      {item === 1 && "Sarah J."}
-                      {item === 2 && "Michael T."}
-                      {item === 3 && "Elena R."}
-                      {item === 4 && "David K."}
+                        {user.names.firstNames} {user.names.lastName}
                     </span>
                   </section>
                 </section>
@@ -561,7 +499,7 @@ export default function LandingPage() {
               <section className="flex items-center gap-4 mb-4">
                 <section className="w-14 h-14 rounded-full overflow-hidden">
                   <Image
-                    src="/placeholder.svg?height=100&width=100"
+                    src={`${BUCKET_URL}/user-05.jpg`}
                     alt="User avatar"
                     width={56}
                     height={56}
@@ -569,7 +507,7 @@ export default function LandingPage() {
                   />
                 </section>
                 <section>
-                  <h4 className="font-medium text-[#5C4033]">Maria Garcia</h4>
+                  <h4 className="font-medium text-[#5C4033]">Nongcebo Mthimkhulu</h4>
                   <p className="text-sm text-[#5C4033]-70%">Urban Gardener</p>
                 </section>
               </section>
@@ -606,7 +544,7 @@ export default function LandingPage() {
               <section className="flex items-center gap-4 mb-4">
                 <section className="w-14 h-14 rounded-full overflow-hidden">
                   <Image
-                    src="/placeholder.svg?height=100&width=100"
+                    src={`${BUCKET_URL}/user-06.jpg`}
                     alt="User avatar"
                     width={56}
                     height={56}
@@ -614,7 +552,7 @@ export default function LandingPage() {
                   />
                 </section>
                 <section>
-                  <h4 className="font-medium text-[#5C4033]">James Wilson</h4>
+                  <h4 className="font-medium text-[#5C4033]">Emmy Wilson</h4>
                   <p className="text-sm text-[#5C4033]-70%">Community Garden Leader</p>
                 </section>
               </section>
@@ -651,7 +589,7 @@ export default function LandingPage() {
               <section className="flex items-center gap-4 mb-4">
                 <section className="w-14 h-14 rounded-full overflow-hidden">
                   <Image
-                    src="/placeholder.svg?height=100&width=100"
+                    src={`${BUCKET_URL}/user-08.jpg`}
                     alt="User avatar"
                     width={56}
                     height={56}
@@ -725,10 +663,10 @@ export default function LandingPage() {
             </section>
             <section className="mt-8 flex items-center justify-center gap-4">
               <section className="flex -space-x-2">
-                {[1, 2, 3, 4].map((i) => (
-                  <section key={i} className="w-8 h-8 rounded-full border-2 border-white overflow-hidden">
+                {users.map((i, index) => (
+                  <section key={index} className="w-8 h-8 rounded-full border-2 border-white overflow-hidden">
                     <Image
-                      src={`/placeholder.svg?height=50&width=50&text=${i}`}
+                      src={i.img}
                       alt={`User ${i}`}
                       width={32}
                       height={32}
@@ -738,7 +676,7 @@ export default function LandingPage() {
                 ))}
               </section>
               <p className="text-sm text-[#5C4033]-80%">
-                Join <span className="font-medium text-[#5C4033]">5,000+</span> gardeners in your area
+                Join <span className="font-medium text-[#5C4033]">2,000+</span> gardeners in your area
               </p>
             </section>
           </motion.section>

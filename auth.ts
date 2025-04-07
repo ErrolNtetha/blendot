@@ -1,5 +1,9 @@
+// @ts-nocheck
+
 import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials";
+import prisma from "./lib/prisma";
+import bcryptjs from 'bcryptjs';
  
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -18,32 +22,63 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             },
             authorize: async (credentials, req) => {
                 const { email, password } = credentials;
+                const SALT_ROUNDS = 15;
 
-                const url = new URL(req?.url); // It used to be req?.query?.mode in v4
-                const mode = url.searchParams.get('mode'); // result: 'signin' || 'signup'
+                if (!(email && password)) throw new Error('Provide email and password');
+
+                const url = new URL(req?.url);
+                const mode = url.searchParams.get('mode');
+                const firstNames = url.searchParams.get('firstNames');
+                const lastName = url.searchParams.get('lastName');
 
                 if (mode === 'signup') { 
-                    // Logic for when the user is signup
+                    const encryptedPassword = await bcryptjs.hash(password as string, SALT_ROUNDS);
+
+                    // Logic for when the user is signingup
+                    const newUser = await prisma.user.create({
+                        data: {
+                            firstNames,
+                            lastName,
+                            email,
+                            password: encryptedPassword,
+                        }
+                    });
+
+                    return newUser;
                 } else {
-                    // Logic for when the user is logging in
+                    // Decrypt the password
+                    // Search the db for the user
+                    // If user if found, return the user
+                    return null
                 }
-
-                const user = {
-                    email: 'user@email.com',
-                    password: '12345678'
-                };
-
-                if (user.email === email && user.password === password) {
-                    console.log('access granted');
-                    return user;
-                } 
-
-                console.log('incorrect email or password');
-                return null;
             }
         }),
     ],
     secret: process.env.AUTH_SECRET,
+      callbacks: {
+        async jwt({ token, user }) {
+          if (user) {
+            token.id = user.id;
+            token.email = user.email;
+            token.firstNames = user.firstNames;
+            token.lastName = user.lastName;
+            token.createdAt = user.createdAt;
+            token.avatar = user.avatar;
+          }
+
+          return token;
+        },
+        async session({ session, token }) {
+            session.user.id = token.id as string;
+            session.email = token.email;
+            session.firstNames = token.firstNames;
+            session.lastName = token.lastName;
+            session.createdAt = token.createdAt;
+            session.avatar = token.avatar;
+
+            return session;
+        }
+      },
     pages: {
         signIn: '/login',
         newUser: '/register'
