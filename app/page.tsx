@@ -164,7 +164,7 @@ export default function LandingPage() {
             >
               <section className="relative h-[400px] w-full rounded-2xl overflow-hidden">
                 <Image
-                  src={`${BUCKET_URL}/pots.jpg`}
+                  src={`${BUCKET_URL}/05.jpg`}
                   alt="People gardening together"
                   fill
                   className="object-cover"
