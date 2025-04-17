@@ -23,7 +23,7 @@ export function LoginForm({
       <section className="grid gap-6">
         <section className="grid gap-3">
           <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" placeholder="m@example.com" required />
+          <Input id="email" type="email" placeholder="Enter your email" required />
         </section>
         <section className="grid gap-3">
           <section className="flex items-center">
@@ -35,7 +35,7 @@ export function LoginForm({
               Forgot your password?
             </a>
           </section>
-          <Input id="password" type="password" required />
+          <Input id="password" type="password" required placeholder="Enter your password" />
         </section>
         <Button type="submit" className="w-full">
           Login

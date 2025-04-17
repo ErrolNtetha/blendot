@@ -62,13 +62,10 @@ export const Header = () => {
               About
             </Link>
             <Link href="#how-it-works" className="text-[#5C4033] hover:text-[#A05C42] transition-colors font-medium">
-              FAQ
+              How It Works
             </Link>
             <Link href="#community" className="text-[#5C4033] hover:text-[#A05C42] transition-colors font-medium">
-              Services
-            </Link>
-            <Link href="#community" className="text-[#5C4033] hover:text-[#A05C42] transition-colors font-medium">
-              Contact
+              Community
             </Link>
             {!session && <section className='flex gap-2'>
                 <Button className="bg-[#A05C42] hover:bg-[#8B4513] text-white" asChild>
@@ -132,7 +129,9 @@ export const Header = () => {
               >
                 Community
               </Link>
-              <Button className="bg-[#A05C42] hover:bg-[#8B4513] text-white w-full">Join Now</Button>
+              <Button className="bg-[#A05C42] hover:bg-[#8B4513] text-white w-full" asChild>
+                <Link href={'/register'}>Join Now</Link>
+              </Button>
             </section>
           </motion.section>
         )}

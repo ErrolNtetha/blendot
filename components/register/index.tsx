@@ -11,8 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-
-const MIN_PASSWORD_LENGTH = 6;
+import { MIN_PASSWORD_LENGTH } from "@/constants/auth";
 
 const RegisterSchema = z.object({
     firstNames: z.string({ required_error: 'Full names is required.' }).max(80),
@@ -50,7 +49,7 @@ export function RegisterForm({
     }
 
   return (
-    <section className={cn("flex flex-col gap-6 h-screen mt-10", className)} {...props}>
+    <section className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="overflow-hidden">
         <CardContent className="grid p-0 md:grid-cols-2">
         <Form {...form}>
