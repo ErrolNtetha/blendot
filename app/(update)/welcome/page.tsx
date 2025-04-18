@@ -37,7 +37,7 @@ export default function WelcomePage() {
     },
   }
 
-  const badgeVariants = {
+  /* const badgeVariants = {
     pulse: {
       scale: [1, 1.05, 1],
       opacity: [0.9, 1, 0.9],
@@ -47,7 +47,7 @@ export default function WelcomePage() {
         repeatType: "reverse",
       },
     },
-  }
+  } */
 
   const handleContinue = () => {
     router.push("/update-profile")
