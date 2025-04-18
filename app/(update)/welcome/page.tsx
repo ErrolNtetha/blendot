@@ -1,4 +1,3 @@
-// @ts-nocheck
 "use client"
 
 import { useState, useEffect } from "react"
@@ -77,7 +76,7 @@ export default function WelcomePage() {
         <div className="p-6 md:p-8">
           {/* Badge */}
           <div className="flex justify-center -mt-16 mb-6">
-            <motion.div className="bg-white rounded-full p-3 shadow-lg" variants={badgeVariants} animate="pulse">
+            <motion.div className="bg-white rounded-full p-3 shadow-lg" animate="pulse">
               <div className="bg-[#A05C42]/10 rounded-full p-4">
                 <Award className="h-10 w-10 text-[#A05C42]" />
               </div>
