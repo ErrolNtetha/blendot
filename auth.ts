@@ -77,10 +77,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             session.user.avatar = token.avatar;
 
             return session;
-        }
+        },
+        redirect({ url, baseUrl }) {
+            return baseUrl + '/dashboard';
       },
     pages: {
         signIn: '/login',
         newUser: '/register'
     },
+      }
 });
