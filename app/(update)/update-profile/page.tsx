@@ -76,7 +76,7 @@ export default function UpdateProfilePage() {
           className="bg-white rounded-2xl shadow-md p-6 md:p-8"
         >
           <form onSubmit={handleSubmit} className="space-y-8">
-            {/* Section 1: Gardener Identity */}
+            {/* Section 1: Gardener Identity 
             <motion.div variants={itemVariants} className="space-y-4">
               <div className="flex items-center gap-3 mb-4">
                 <div className="bg-[#A05C42]/10 p-2 rounded-full">
@@ -106,7 +106,7 @@ export default function UpdateProfilePage() {
                   </label>
                 </div>
               </div>
-            </motion.div>
+            </motion.div>*/}
 
             {/* Section 2: Gardening Details */}
             <motion.div variants={itemVariants} className="space-y-4 pt-2">
