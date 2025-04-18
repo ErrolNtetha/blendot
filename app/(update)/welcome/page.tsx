@@ -147,7 +147,7 @@ export default function WelcomePage() {
               onClick={handleContinue}
               className="w-full bg-[#A05C42] hover:bg-[#8B4513] text-white h-12 rounded-full text-base font-medium"
             >
-              Let's go!
+              Let&apos;s go!
             </Button>
           </motion.div>
 
@@ -159,7 +159,7 @@ export default function WelcomePage() {
             className="text-center mt-4"
           >
             <Link href="/dashboard" className="text-sm text-[#5C4033]/70 hover:text-[#A05C42] transition-colors">
-              I'll do this later
+              I&apos;ll do this later
             </Link>
           </motion.div>
         </div>
