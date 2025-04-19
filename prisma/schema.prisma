@@ -23,7 +23,7 @@ model User {
   password   String
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
-  roleId     String
+  roleId     String     @default("gardener")
   role       Role       @relation(fields: [roleId], references: [id])
   seedPosts  SeedPost[]
   profile    Profile?
