@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { signOut, useSession } from 'next-auth/react'
 import { FiPower } from 'react-icons/fi';
+import Image from 'next/image'
 // import { navItems } from './navItems'
 
 export const Header = () => {
@@ -44,13 +45,13 @@ export const Header = () => {
       >
         <section className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <span className="font-serif font-bold text-xl text-[#5C4033]">Blendot</span>
-            {/* <Image 
-                src={'/logo.png'}
+            <Image
+                src={'/logo/logo-primary.png'}
                 alt='Blendot logo'
-                width={100}
+                width={110}
                 height={100}
-            /> */}
+                className="h-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}

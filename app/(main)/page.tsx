@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
   Leaf,
-  Flower2,
   Users,
   MapPin,
   Search,
@@ -716,9 +715,14 @@ export default function LandingPage() {
         <section className="container mx-auto px-4">
           <section className="grid md:grid-cols-4 gap-8">
             <section className="md:col-span-1">
-              <Link href="/" className="flex items-center gap-2 mb-4">
-                <Flower2 className="h-8 w-8 text-white" />
-                <span className="font-serif font-bold text-xl text-white">Blendot</span>
+              <Link href="/" className="mb-2 inline-block">
+                <Image
+                    src={'/logo/logo-white.png'}
+                    alt='Blendot logo'
+                    width={110}
+                    height={100}
+                    className="h-auto"
+                />
               </Link>
               <p className="text-white-80% mb-4">
                 Connecting gardeners to share seeds, plants, and produce in their local communities.

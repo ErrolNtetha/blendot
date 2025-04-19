@@ -12,6 +12,7 @@ import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { MIN_PASSWORD_LENGTH } from "@/constants/auth";
+import { ArrowLeft } from "lucide-react";
 
 const RegisterSchema = z.object({
     firstNames: z.string({ required_error: 'Full names is required.' }).max(80),
@@ -50,6 +51,16 @@ export function RegisterForm({
 
   return (
     <section className={cn("flex flex-col gap-6", className)} {...props}>
+        <Link href={'/'} className="flex items-center gap-2">
+            <ArrowLeft />
+            <Image
+                src={'/logo/logo-primary.png'}
+                alt='Blendot logo'
+                width={110}
+                height={100}
+                className="h-auto"
+            />
+        </Link>
       <Card className="overflow-hidden">
         <CardContent className="grid p-0 md:grid-cols-2">
         <Form {...form}>

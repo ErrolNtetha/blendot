@@ -10,12 +10,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         Credentials({
             credentials: {
                 email: {
-                    label: 'email',
-                    type: 'text',
+                    label: 'Email',
+                    type: 'email',
                     placeholder: 'Enter your email'
                 },
                 password: {
-                    label: 'password',
+                    label: 'Password',
                     type: 'password',
                     placeholder: 'Enter your password'
                 },
@@ -41,6 +41,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                             lastName,
                             email,
                             password: encryptedPassword,
+                            role: 'gardener'
                         }
                     });
 
@@ -79,7 +80,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             return session;
         },
         redirect({ url, baseUrl }) {
-            return baseUrl + '/dashboard';
+            return baseUrl + '/welocome';
       },
     pages: {
         signIn: '/login',

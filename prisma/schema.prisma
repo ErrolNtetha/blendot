@@ -23,8 +23,18 @@ model User {
   password   String
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
+  role_id    String
+  role       Role       @relation(fields: [role_id], references: [id])
   seedPosts  SeedPost[]
   profile    Profile?
+}
+
+model Role {
+  id         String     @id @default(uuid())
+  name       String     @unique
+  permissions String[]
+  users      User[]
+  role_id    String
 }
 
 model SeedPost {
